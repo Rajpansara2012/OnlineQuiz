@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>topics</title>
+    </head>
+    <body>
+        <h1>Topics</h1>
+        <a href="userhome">Home</a>
+
+        {{msg}}
+        <ul>
+            {% for topic in topics %}
+              <li><a href="/exam/{{ topic }}/">{{ topic }}</a></li>
+            {% endfor %}
+          </ul>
+    </body>
+</html>

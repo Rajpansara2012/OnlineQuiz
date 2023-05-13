@@ -1,0 +1,18 @@
+
+<html>
+<head>
+    <title>singup</title>
+</head>
+<body>
+    <h2>Signup</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{msg}}<br>
+        Username:<input type="text" name="username"><br>
+        Password:<input type="password" name="password"><br>
+        <label><input type="radio" name="role" value="user" id="user"> user</label><br>
+        <label><input type="radio" name="role" value="admin" id="admin"> admin</label><br>
+        <input type="submit" value="sigup">
+    </form>
+</body>
+</html>

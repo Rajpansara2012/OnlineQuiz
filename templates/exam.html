@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <ul>
+            {% for question in questions %}
+              <li>{{ question.question }}</li>
+              <li>{{ question.option1 }}</li>
+              <li>{{ question.option2 }}</li>
+              <li>{{ question.option3 }}</li>
+              <li>{{ question.option4 }}</li>
+            {% endfor %}
+          </ul>
+    </body>
+</html>

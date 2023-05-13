@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz</title>
+	<style type="text/css">
+		.question {
+			margin: 20px 0;
+		}
+		.options {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 10px 0;
+		}
+		.option {
+			flex: 1 1 auto;
+			margin: 5px;
+			padding: 10px;
+			background-color: #eee;
+			cursor: pointer;
+		}
+		.option:hover {
+			background-color: #ddd;
+		}
+		.question-list {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 20px;
+		}
+		.question-box {
+			flex: 0 0 10%;
+			height: 30px;
+			margin: 5px;
+			background-color: white;
+			border: 1px solid #ccc;
+			text-align: center;
+			line-height: 30px;
+			font-size: 14px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		.question-box.answered {
+			background-color: #0f0;
+		}
+		.question-box.skipped {
+			background-color: #ff0;
+		}
+		.button-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 20px;
+		}
+		.button {
+			padding: 10px;
+			background-color: #ccc;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.button:hover {
+			background-color: #bbb;
+		}
+	</style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+	<div class="question">
+		<h2>Question 9</h2>
+		<p>{{question.question}}</p>
+		<div class="options">
+            <label for="option1">
+                <input type="radio" id="option1" name="question9" value="op1">
+                {{question.option1}}
+            </label>
+            <label for="option2">
+                <input type="radio" id="option2" name="question9" value="op2">
+                {{question.option2}}
+            </label>
+            <label for="option3">
+                <input type="radio" id="option3" name="question9" value="op3">
+                {{question.option3}}
+            </label>
+            <label for="option4">
+                <input type="radio" id="option4" name="question9" value="op4">
+                {{question.option4}}
+            </label>
+        </div>
+        
+	</div>
+	<div class="button-row">
+		<button type="submit" class="button" id="previous-btn" formaction="backq8">Previous Question</a>
+		<button type="submit" class="button" id="next-btn" formaction="q10">Next Question</a>
+	</div>
+</form>
+    </body>
+	<div class="question-list">
+        {% if q1.status == "1" %}
+		<div class="question-box answered">1</div>
+        {% else %}
+        <div class="question-box skipped">1</div>
+        {% endif %}
+		{% if q2.status == "1" %}
+		<div class="question-box answered">2</div>
+        {% else %}
+        <div class="question-box skipped">2</div>
+        {% endif %}
+		{% if q3.status == "1" %}
+		<div class="question-box answered">3</div>
+        {% else %}
+        <div class="question-box skipped">3</div>
+        {% endif %}
+		{% if q4.status == "1" %}
+		<div class="question-box answered">4</div>
+        {% else %}
+        <div class="question-box skipped">4</div>
+        {% endif %}
+		{% if q5.status == "1" %}
+		<div class="question-box answered">5</div>
+        {% else %}
+        <div class="question-box skipped">5</div>
+        {% endif %}
+		{% if q6.status == "1" %}
+		<div class="question-box answered">6</div>
+        {% else %}
+        <div class="question-box skipped">6</div>
+        {% endif %}
+		{% if q7.status == "1" %}
+		<div class="question-box answered">7</div>
+        {% else %}
+        <div class="question-box skipped">7</div>
+        {% endif %}
+		{% if q8.status == "1" %}
+		<div class="question-box answered">8</div>
+        {% else %}
+        <div class="question-box skipped">8</div>
+        {% endif %}
+		<div class="question-box">9</div>
+		<div class="question-box">10</div>
+	</div>
+	
+	
