@@ -39,22 +39,25 @@ def login_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        user = Login()
-        user.username = request.POST.get('username')
-        user.password = request.POST.get('password')
-        user.role = request.POST.get('role')
+        
         try:
-            Login.objects.create(username=user.username)
+            user = Login()
+            user.username = request.POST.get('username')
+            user.password = request.POST.get('password')
+            user.role = request.POST.get('role')
+            user.save()
         except IntegrityError:
             msg = 'User already exists!'
+            contex = {
+                'msg': msg
+            }
+            return render(request,'signup.html',contex)
+        request.session['username'] = request.POST['username']
         contex = {
-            'msg':msg
+                'username' : request.POST['username'],
+                'msg' : "singup is done!!"
         }
-        return render(request,'signup.html',contex)
-        user.save()
-        contex = {
-                'username' : request.POST['username']
-        }
+        
         if user is not None:
             if user.role == 'admin':  # note the change here: compare role.role to 'admin'
                 return render(request, 'adminhome.html', contex)
@@ -103,7 +106,10 @@ def userhome(request,topic=None):
 
 def quiz(request):
     topics = Questions.objects.values_list('topic', flat=True).distinct()
-    context = {'topics': topics}
+    context = {
+        'topics': topics,
+        'username' : request.session['username']
+    }
     return render(request, 'topic.html', context)
 
 def exam(request, topic):
